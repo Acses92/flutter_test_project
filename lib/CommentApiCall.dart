@@ -25,9 +25,9 @@ class Comments {
   }
 }
 
-Future<List<Comments>> getComments(index) async{
+Future<List<Comments>> getComments() async{
   final response = await http.get(
-    Uri.parse("https://jsonplaceholder.typicode.com/posts/${index}/comments"),
+    Uri.parse("https://jsonplaceholder.typicode.com/posts/1/comments"),
   );
   if(response.statusCode == 200) {
     var jsonResponse =json.decode(response.body);

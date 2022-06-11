@@ -1,7 +1,8 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_test_project/CommentApiCall.dart';
 import 'package:flutter_test_project/PostsApiCall.dart';
+import 'package:flutter_test_project/Comments.dart';
 
 
 void main() {
@@ -21,6 +22,7 @@ class _MyAppState extends State<MyApp>{
   @override
   void initState() {
     super.initState();
+  //  _toCommentsPage();
     posts = getPosts();
   }
 
@@ -44,7 +46,7 @@ class _MyAppState extends State<MyApp>{
                           return ListTile(
                             title: Text(snapshot.data![index].title),
                             subtitle: Text(snapshot.data![index].body),
-                          //  onTap: _toCommentsPage(index),
+                          //  onTap: _toCommentsPage(),
                           );
                         });
                   } else if (snapshot.hasError) {
@@ -57,9 +59,10 @@ class _MyAppState extends State<MyApp>{
         ));
   }
 
+
   /*
-  _toCommentsPage(Posts index) {
+  _toCommentsPage() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => Comments(index)));
+        context, MaterialPageRoute(builder: (context) => const Comments()));
   }*/
 }
