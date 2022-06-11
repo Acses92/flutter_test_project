@@ -40,7 +40,6 @@ class _Comments extends State<CommentsPage>{
                             leading: Icon(Icons.face),
                             title: Text(snapshot.data![index].name, style: TextStyle(fontSize: 22),),
                             subtitle: Text(snapshot.data![index].body),
-                            //  onTap: _toCommentsPage(index),
                           );
                         });
                   } else if (snapshot.hasError) {
