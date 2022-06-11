@@ -26,6 +26,7 @@ class _MyAppState extends State<MyApp>{
 
   @override
   Widget build(BuildContext context) {
+    var  postId;
     return MaterialApp(
         home: Scaffold(
           appBar: AppBar(
@@ -35,22 +36,23 @@ class _MyAppState extends State<MyApp>{
           body: Center(
             child: FutureBuilder<List<Posts>>(
                 future: posts,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
+                builder: (context, posts) {
+                  if (posts.hasData) {
                     return ListView.builder(
-
-                        itemCount: snapshot.data!.length,
+                        itemCount: posts.data!.length,
                         itemBuilder: (context, index) {
                           return ListTile(
-                            title: Text(snapshot.data![index].title),
-                            subtitle: Text(snapshot.data![index].body),
+                            title: Text(posts.data![index].title),
+                            subtitle: Text(posts.data![index].body),
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => CommentsPage()));
+                              postId = index;
+                              Navigator.push(context, MaterialPageRoute(builder:
+                                  (context) => CommentsPage(id: postId)));
                             },
                           );
                         });
-                  } else if (snapshot.hasError) {
-                    return Text(snapshot.error.toString());
+                  } else if (posts.hasError) {
+                    return Text(posts.error.toString());
                   } else {
                     return CircularProgressIndicator();
                   }

@@ -5,22 +5,23 @@ import 'package:flutter_test_project/CommentApiCall.dart';
 
 class CommentsPage extends StatefulWidget {
 
-  const CommentsPage({super.key});
+  const CommentsPage({super.key, required this.id});
+  final int id;
 
   @override
   State<CommentsPage> createState() => _Comments();
 }
 class _Comments extends State<CommentsPage>{
-  late Future<List<Comments>> comments;
-
+  get id => id;
   @override
   void initState() {
+    var comments = getComments(id);
     super.initState();
-    comments = getComments();
   }
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
         home: Scaffold(
           appBar: AppBar(
