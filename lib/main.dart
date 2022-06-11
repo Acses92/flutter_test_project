@@ -26,7 +26,6 @@ class _MyAppState extends State<MyApp>{
 
   @override
   Widget build(BuildContext context) {
-    var  postId;
     return MaterialApp(
         home: Scaffold(
           appBar: AppBar(
@@ -45,9 +44,9 @@ class _MyAppState extends State<MyApp>{
                             title: Text(posts.data![index].title),
                             subtitle: Text(posts.data![index].body),
                             onTap: () {
-                              postId = index;
                               Navigator.push(context, MaterialPageRoute(builder:
-                                  (context) => CommentsPage(id: postId)));
+                                  (context) => CommentsPage(
+                                      id: posts.data![index].id)));
                             },
                           );
                         });

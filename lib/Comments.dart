@@ -4,18 +4,17 @@ import 'package:flutter_test_project/CommentApiCall.dart';
 
 
 class CommentsPage extends StatefulWidget {
-
-  const CommentsPage({super.key, required this.id});
   final int id;
+  const CommentsPage({super.key, required this.id});
 
   @override
   State<CommentsPage> createState() => _Comments();
 }
 class _Comments extends State<CommentsPage>{
-  get id => id;
+  late Future<List<Comments>> comments;
   @override
   void initState() {
-    var comments = getComments(id);
+    comments = getComments(widget.id);
     super.initState();
   }
 
@@ -39,7 +38,8 @@ class _Comments extends State<CommentsPage>{
                         itemBuilder: (context, index) {
                           return ListTile(
                             leading: Icon(Icons.face),
-                            title: Text(snapshot.data![index].name, style: TextStyle(fontSize: 22),),
+                            title: Text(snapshot.data![index].name,
+                              style: TextStyle(fontSize: 22),),
                             subtitle: Text(snapshot.data![index].body),
                           );
                         });
