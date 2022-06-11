@@ -30,21 +30,20 @@ class _Comments extends State<CommentsPage>{
           body: Center(
             child: FutureBuilder<List<Comments>>(
                 future: comments,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
+                builder: (context, comments) {
+                  if (comments.hasData) {
                     return ListView.builder(
-
-                        itemCount: snapshot.data!.length,
+                        itemCount: comments.data!.length,
                         itemBuilder: (context, index) {
                           return ListTile(
                             leading: Icon(Icons.face),
-                            title: Text(snapshot.data![index].name,
+                            title: Text(comments.data![index].name,
                               style: TextStyle(fontSize: 22),),
-                            subtitle: Text(snapshot.data![index].body),
+                            subtitle: Text(comments.data![index].body),
                           );
                         });
-                  } else if (snapshot.hasError) {
-                    return Text(snapshot.error.toString());
+                  } else if (comments.hasError) {
+                    return Text(comments.error.toString());
                   } else {
                     return CircularProgressIndicator();
                   }
