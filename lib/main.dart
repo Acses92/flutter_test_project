@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_test_project/CommentApiCall.dart';
 import 'package:flutter_test_project/PostsApiCall.dart';
 import 'package:flutter_test_project/Comments.dart';
 
@@ -22,7 +21,7 @@ class _MyAppState extends State<MyApp>{
   @override
   void initState() {
     super.initState();
-  //  _toCommentsPage();
+   // _toCommentsPage();
     posts = getPosts();
   }
 
@@ -46,7 +45,9 @@ class _MyAppState extends State<MyApp>{
                           return ListTile(
                             title: Text(snapshot.data![index].title),
                             subtitle: Text(snapshot.data![index].body),
-                          //  onTap: _toCommentsPage(),
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => CommentsPage()));
+                            },
                           );
                         });
                   } else if (snapshot.hasError) {
@@ -59,10 +60,4 @@ class _MyAppState extends State<MyApp>{
         ));
   }
 
-
-  /*
-  _toCommentsPage() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const Comments()));
-  }*/
 }

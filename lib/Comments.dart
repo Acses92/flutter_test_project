@@ -1,16 +1,16 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/CommentApiCall.dart';
 
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class CommentsPage extends StatefulWidget {
+
+  const CommentsPage({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<CommentsPage> createState() => _Comments();
 }
-class _MyAppState extends State<MyApp>{
+class _Comments extends State<CommentsPage>{
   late Future<List<Comments>> comments;
 
   @override
@@ -52,5 +52,4 @@ class _MyAppState extends State<MyApp>{
           ),
         ));
   }
-
 }
